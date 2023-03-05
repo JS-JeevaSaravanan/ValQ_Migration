@@ -4,12 +4,14 @@ import {
   decompressFromUint8Array,
 } from "lz-string";
 
-const decompressText = (text = "") => {
+function decompressText (text = "") {
   console.log("decompressText: ");
   return;
-  return decompressFromBase64(text);
+  // return decompressFromBase64(text);
 };
 
 const compressText = (text) => {
-  return compressToBase64(text);
+  return ;
+  // return compressToBase64(text);
 };
+
