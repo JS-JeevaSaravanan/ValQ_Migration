@@ -16,22 +16,33 @@
   </head>
   <body>
     <div>
-      <textarea
-        rows="5"
-        cols="50"
-        id="compress-textArea"
-        placeholder="Enter exported text"
-      ></textarea>
-      <button type="button" onclick="transfer()">Migrate</button>
+      <div>
+        <button type="button" onclick="uploadFile()">Upload</button>
+      </div>
+      <div>
+        <textarea
+          rows="5"
+          cols="50"
+          id="compress-textArea"
+          placeholder="Enter exported text"
+        ></textarea>
+      </div>
+      <div>
+        <button type="button" onclick="transfer()">Migrate</button>
+      </div>
     </div>
     <div>
-      <textarea
-        rows="5"
-        cols="50"
-        id="compressed-textArea"
-        placeholder="Get new migrated text"
-      ></textarea>
-      <button type="button" onclick="downloadFile()">Download</button>
+      <div>
+        <textarea
+          rows="5"
+          cols="50"
+          id="compressed-textArea"
+          placeholder="Get new migrated text"
+        ></textarea>
+      </div>
+      <div>
+        <button type="button" onclick="downloadFile()">Download</button>
+      </div>
     </div>
     <div>
       <p>Things that will be transferred and not transferred</p>

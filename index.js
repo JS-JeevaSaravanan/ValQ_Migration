@@ -342,6 +342,29 @@ function transfer() {
   compressedTextArea.value = compressedText;
 }
 
+function uploadFile() {
+  const handleFileRead = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = (e) => {
+      const fileContent = e.target.result;
+      const compressTextArea = document.getElementById("compress-textArea");
+      compressTextArea.value = fileContent;
+    };
+    reader.readAsText(file);
+  };
+
+  try {
+    const fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.setAttribute("accept", ".txt");
+    fileInput.onchange = handleFileRead;
+    fileInput.click();
+  } catch (e) {
+    console.log(`File upload failed! `, e);
+  }
+}
+
 function downloadFile() {
   const compressedTextArea = document.getElementById("compressed-textArea");
   const textContent = compressedTextArea.value;
