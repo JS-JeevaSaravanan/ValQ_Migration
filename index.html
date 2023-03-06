@@ -15,26 +15,144 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clone/1.0.4/clone.min.js"></script>
   </head>
   <body>
-    <textarea
-      class="plain"
-      rows="5"
-      cols="50"
-      id="compress-textArea"
-    ></textarea>
-    <button
-      class="compress-button"
-      type="button"
-      onclick="transfer()"
-      id="compress-button"
-    >
-      Compress
-    </button>
-    <textarea
-      class="compressed"
-      rows="5"
-      cols="50"
-      id="compressed-textArea"
-    ></textarea>
-    <button type="button" onclick="downloadFile()">Download</button>
+    <div>
+      <textarea
+        rows="5"
+        cols="50"
+        id="compress-textArea"
+        placeholder="Enter exported text"
+      ></textarea>
+      <button type="button" onclick="transfer()">Migrate</button>
+    </div>
+    <div>
+      <textarea
+        rows="5"
+        cols="50"
+        id="compressed-textArea"
+        placeholder="Get new migrated text"
+      ></textarea>
+      <button type="button" onclick="downloadFile()">Download</button>
+    </div>
+    <div>
+      <p>Things that will be transferred and not transferred</p>
+      <table>
+        <tr>
+          <td>Tree Structure</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Node Hierarchy and Strcuture</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Template Structure and Hierarchy</td>
+          <td>Will have issues, not recommended</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>General Properties</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Node Name</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Type</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Configuration</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Time Aggregation</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Dynamic children</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Format Properties</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Scale and decimal</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Prefix</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Suffix</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Conditional Formatting - Global & Node Level</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Simulation</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Simulation method</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Slide right to</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Display Settings</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Node Display</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Set as KPI, Key Input</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Constraint</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Composite nodes</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>Secondary KPI - Gloabl & Node level</td>
+          <td>No</td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>
