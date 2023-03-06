@@ -5,14 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script type="module" src="index.js"></script>
+    <script src="./index.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"
+      integrity="sha512-qoCTmFwBtCPvFhA+WAqatSOrghwpDhFHxwAGh+cppWonXbHA09nG1z5zi4/NGnp8dUhXiVrzA6EnKgJA+fyrpw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clone/1.0.4/clone.min.js"></script>
   </head>
   <body>
-    <form>
-      <textarea id="content-text-area"> </textarea>
-    </form>
-
-    <button>Clear</button>
-    <button onclick="decompressText()">Convert</button>
+    <textarea
+      class="plain"
+      rows="5"
+      cols="50"
+      id="compress-textArea"
+    ></textarea>
+    <button
+      class="compress-button"
+      type="button"
+      onclick="transfer()"
+      id="compress-button"
+    >
+      Compress
+    </button>
+    <textarea
+      class="compressed"
+      rows="5"
+      cols="50"
+      id="compressed-textArea"
+    ></textarea>
+    <button type="button" onclick="downloadFile()">Download</button>
   </body>
 </html>
