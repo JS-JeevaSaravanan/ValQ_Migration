@@ -381,3 +381,43 @@ function downloadFile() {
   element.click();
   document.body.removeChild(element);
 }
+
+function processFileContent() {
+  const fileInput = document.getElementById("fileInput");
+  const file = fileInput.files[0];
+  if (!file) {
+    alert("Please choose file to process it!");
+  }
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+    const content = event.target.result;
+    const processedContent = migrateFileContent(content);
+    downloadFileContent(processedContent);
+  };
+
+  reader.readAsText(file);
+}
+
+function migrateFileContent(content) {
+  const importedData = JSON.parse(decompressText(content));
+  const treeData = getTreeData(importedData);
+
+  const importedTreeConfig = treeData?.treeConfig || [];
+  const processedTreeConfig = processTreeConfig(importedTreeConfig);
+
+  const newTreeData = clone(EMPTY_TREE_DATA);
+  newTreeData.treeConfig = processedTreeConfig;
+
+  const compressedText = compressText(JSON.stringify(newTreeData));
+  return compressedText;
+}
+
+function downloadFileContent(content) {
+  const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const downloadLink = document.getElementById("downloadLink");
+  downloadLink.href = url;
+  downloadLink.download = "processed_file.txt";
+  downloadLink.style.display = "block";
+}
