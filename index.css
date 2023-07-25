@@ -10,6 +10,10 @@ body {
 
 .content {
   padding: 42vh 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .test-link {
@@ -44,20 +48,28 @@ body {
   padding: 12px 26px;
 }
 
-td {
-  border: 1px solid black;
+.import-upload {
+  color: #0078d4;
+  font-weight: 400;
+  font-size: 13px;
 }
 
-th {
-  padding: 15px;
+.import-upload:hover {
+  cursor: pointer;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+
+.import-modal-upload {
+  border: 1px dashed #0078d4;
+  padding: 8px;
+  font-size: 14px;
+  color: #0078d4 !important;
+  width: 400px;
 }
 
-td {
-  height: 30px;
-  vertical-align: bottom;
+.file-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
