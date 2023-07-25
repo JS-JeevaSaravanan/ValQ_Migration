@@ -1,44 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="./index.js"></script>
-    <link rel="stylesheet" href="./index.css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"
-      integrity="sha512-qoCTmFwBtCPvFhA+WAqatSOrghwpDhFHxwAGh+cppWonXbHA09nG1z5zi4/NGnp8dUhXiVrzA6EnKgJA+fyrpw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clone/1.0.4/clone.min.js"></script>
-  </head>
-  <body>
-    <div class="content">
-      <div>
-        <a href="./test.html" class="test-link">Test page</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="./index.js"></script>
+  <link rel="stylesheet" href="./index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"
+    integrity="sha512-qoCTmFwBtCPvFhA+WAqatSOrghwpDhFHxwAGh+cppWonXbHA09nG1z5zi4/NGnp8dUhXiVrzA6EnKgJA+fyrpw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clone/1.0.4/clone.min.js"></script>
+</head>
+
+<body>
+  <div class="content">
+
+    <div class="file-actions">
+      <div class='import-upload import-modal-upload' onclick="uploadNewModelFile()">
+        <div id="uploadBtn">Upload configuration file</div>
       </div>
-      <div>
-        <input type="file" id="fileInput" />
-        <button
-          id="processBtn"
-          onclick="processFileContent()"
-          class="process-btn"
-        >
-          Process File
-        </button>
-        <div class="download-file-div">
-          <a
-            href="#"
-            id="downloadLink"
-            class="download-link"
-            style="display: none"
-            >Download Migrated File</a
-          >
-        </div>
-      </div>
+
+      <button id="processBtn" onclick="processFileContent()" class="process-btn">
+        Process File
+      </button>
+
     </div>
-  </body>
+
+    <div class="download-file-div">
+      <a href="#" id="downloadLink" class="download-link" style="display: none">Download Migrated File</a>
+    </div>
+  </div>
+</body>
+
 </html>

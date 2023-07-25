@@ -295,6 +295,9 @@ const PROPS_TO_COPY = [
   "_formulaBkp",
 ];
 
+let importedFileContent = "";
+let importedFileName = "";
+
 function compressText(str) {
   return LZString.compressToBase64(str);
 }
@@ -307,96 +310,6 @@ function getTreeData(exportObject) {
   const keys = Object.keys(exportObject);
   const treeKey = keys.find((key) => key.startsWith("tree"));
   return exportObject[treeKey].properties;
-}
-
-function processTreeConfig(importedTreeConfig) {
-  const newTreeConfig = [];
-  importedTreeConfig.forEach((oldNode) => {
-    const newNode = clone(DEFAULT_NODE_DATA);
-    PROPS_TO_COPY.forEach((prop) => (newNode[prop] = oldNode[prop]));
-    newTreeConfig.push(newNode);
-  });
-  return newTreeConfig;
-}
-
-function transfer() {
-  const compressTextArea = document.getElementById("compress-textArea");
-  const text = compressTextArea.value;
-
-  if (!text) {
-    alert("Please give valid input");
-    return;
-  }
-
-  const importedData = JSON.parse(decompressText(text));
-  const treeData = getTreeData(importedData);
-
-  const importedTreeConfig = treeData?.treeConfig || [];
-  const processedTreeConfig = processTreeConfig(importedTreeConfig);
-
-  const newTreeData = clone(EMPTY_TREE_DATA);
-  newTreeData.treeConfig = processedTreeConfig;
-
-  const compressedText = compressText(JSON.stringify(newTreeData));
-  const compressedTextArea = document.getElementById("compressed-textArea");
-  compressedTextArea.value = compressedText;
-}
-
-function uploadFile() {
-  const handleFileRead = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = (e) => {
-      const fileContent = e.target.result;
-      const compressTextArea = document.getElementById("compress-textArea");
-      compressTextArea.value = fileContent;
-    };
-    reader.readAsText(file);
-  };
-
-  try {
-    const fileInput = document.createElement("input");
-    fileInput.setAttribute("type", "file");
-    fileInput.setAttribute("accept", ".txt");
-    fileInput.onchange = handleFileRead;
-    fileInput.click();
-  } catch (e) {
-    console.log(`File upload failed! `, e);
-  }
-}
-
-function downloadFile() {
-  const compressedTextArea = document.getElementById("compressed-textArea");
-  const textContent = compressedTextArea.value;
-  if (!textContent) {
-    alert("Please give valid input");
-    return;
-  }
-
-  var element = document.createElement("a");
-  element.setAttribute("href", "data:text/plain;charset=utf-8," + textContent);
-  element.setAttribute("download", "exportFile");
-  element.style.display = "none";
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
-}
-
-function processFileContent() {
-  const fileInput = document.getElementById("fileInput");
-  const file = fileInput.files[0];
-  if (!file) {
-    alert("Please choose file to process it!");
-  }
-  const reader = new FileReader();
-
-  reader.onload = function (event) {
-    const content = event.target.result;
-    const processedContent = migrateFileContent(content);
-    downloadFileContent(processedContent);
-  };
-
-  reader.readAsText(file);
 }
 
 function migrateFileContent(content) {
@@ -413,11 +326,67 @@ function migrateFileContent(content) {
   return compressedText;
 }
 
+function processTreeConfig(importedTreeConfig) {
+  const newTreeConfig = [];
+
+  for (let i = 0; i < importedTreeConfig.length; i++) {
+    const oldNode = importedTreeConfig[i];
+    const newNode = clone(DEFAULT_NODE_DATA);
+
+    for (let j = 0; j < PROPS_TO_COPY.length; j++) {
+      const prop = PROPS_TO_COPY[j];
+      if (prop === "sMeth" && oldNode[prop] === "M") {
+        continue;
+      } else {
+        newNode[prop] = oldNode[prop];
+      }
+    }
+
+    newTreeConfig.push(newNode);
+  }
+  return newTreeConfig;
+}
+
 function downloadFileContent(content) {
   const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const downloadLink = document.getElementById("downloadLink");
   downloadLink.href = url;
-  downloadLink.download = "processed_file.txt";
+  downloadLink.download = `migrated_${importedFileName}.txt`;
   downloadLink.style.display = "block";
 }
+
+function processFileContent() {
+  try {
+    const processedContent = migrateFileContent(importedFileContent);
+    downloadFileContent(processedContent);
+  } catch (e) {
+    alert("Migrate failed!");
+    console.log(`Migrate failed! `, e);
+  }
+}
+
+const uploadNewModelFile = () => {
+  const handleFileRead = (e) => {
+    const file = e.target.files[0];
+    importedFileName = file.name;
+    const uploadBtn = document.getElementById("uploadBtn");
+    uploadBtn.innerHTML = importedFileName;
+    const reader = new FileReader();
+    reader.onloadend = (e) => {
+      importedFileContent = e.target.result;
+    };
+    reader.readAsText(file);
+  };
+
+  try {
+    const fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.setAttribute("accept", ".txt");
+    fileInput.onchange = handleFileRead;
+    fileInput.click();
+  } catch (e) {
+    AudioListener("File upload failed!");
+    console.log(`File upload failed! `, e);
+  }
+};
