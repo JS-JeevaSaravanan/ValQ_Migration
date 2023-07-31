@@ -174,7 +174,7 @@ const getEmptyTreeData = () => {
     ],
     activeScenario: "1",
     waterFallType: "V",
-    modelCollapsedNodes: new Set(),
+    modelCollapsedNodes: [],
     activeSeries: ["base", "tgt"],
   };
 };
