@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./index.js"></script>
     <link rel="stylesheet" href="./index.css" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"
@@ -13,7 +12,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clone/1.0.4/clone.min.js"></script>
   </head>
 
   <body>
@@ -44,6 +42,226 @@
           >Download Migrated File</a
         >
       </div>
+
+      <div class="header">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
+            fill="none"
+          >
+            <path
+              d="M18.9979 1.98715C18.5972 2.6981 18.4381 3.49523 18.4925 4.26524C18.5339 4.85019 18.2734 5.41043 17.8159 5.70517L15.9932 6.87907L16.6809 8.19304L18.5036 7.01914C18.9641 6.72253 19.5331 6.75662 19.9749 7.08639C20.0796 7.16455 20.1895 7.23706 20.3044 7.30333C21.8528 8.19646 23.7917 7.61592 24.722 5.97837C25.7866 4.10421 25.1688 1.62435 23.3779 0.625424C21.8299 -0.238018 19.9162 0.357921 18.9979 1.98715Z"
+              fill="#F9C11A"
+            />
+            <path
+              d="M21.9965 12.0838C21.2409 12.0522 20.5382 12.296 19.9629 12.7316C19.5259 13.0625 18.958 13.0909 18.4997 12.7975L16.6743 11.6289L15.9888 12.9443L17.8142 14.1129C18.2754 14.4081 18.5319 14.9722 18.4939 15.5613C18.4849 15.7009 18.4828 15.8426 18.4882 15.9861C18.5603 17.9197 19.9794 19.4954 21.7234 19.5749C23.7193 19.666 25.3517 17.8375 25.2418 15.6181C25.1466 13.6997 23.728 12.156 21.9965 12.0838Z"
+              fill="#368CCB"
+            />
+            <path
+              d="M12.7553 17.9861C11.9997 17.9546 11.297 18.1984 10.7217 18.6339C10.2847 18.9648 9.7168 18.9932 9.25853 18.6999L7.43308 17.5312L6.74756 18.8466L8.57297 20.0152C9.03422 20.3105 9.29073 20.8746 9.25271 21.4636C9.24372 21.6032 9.24163 21.7449 9.24701 21.8884C9.31907 23.8221 10.7382 25.3977 12.4822 25.4773C14.4781 25.5684 16.1105 23.7399 16.0005 21.5204C15.9054 19.6021 14.4868 18.0583 12.7553 17.9861Z"
+              fill="#EC1274"
+            />
+            <path
+              d="M9.75327 7.89729C9.35252 8.60824 9.19348 9.40536 9.24791 10.1754C9.28926 10.7603 9.02881 11.3206 8.57122 11.6153L6.74854 12.7892L7.4363 14.1032L9.25895 12.9293C9.71951 12.6327 10.2885 12.6668 10.7303 12.9965C10.835 13.0747 10.9449 13.1472 11.0598 13.2135C12.6082 14.1066 14.5471 13.5261 15.4773 11.8885C16.542 10.0143 15.9241 7.53449 14.1333 6.53556C12.5853 5.67216 10.6716 6.26806 9.75327 7.89729Z"
+              fill="#F37F20"
+            />
+            <path
+              d="M3.38083 19.5636C5.24801 19.5636 6.76167 17.8853 6.76167 15.815C6.76167 13.7447 5.24801 12.0664 3.38083 12.0664C1.51365 12.0664 0 13.7447 0 15.815C0 17.8853 1.51365 19.5636 3.38083 19.5636Z"
+              fill="#23AF9F"
+            />
+          </svg>
+        </div>
+        <div class="icon-header">Convert Report</div>
+      </div>
+      <div class="body-content">
+        <!--body-->
+        <div class="body-header">Convert Valq Report from 2.0 to 3.0</div>
+
+        <div class="main-section">
+          <div class="drop-file-section">
+            <div onclick="uploadAndProcess()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_14438_29071)">
+                  <path
+                    d="M1.16667 3.16667C1.16667 2.0621 2.0621 1.16667 3.16667 1.16667H11.5572L16.0286 5.63807L18.5 8.10948V21.8333C18.5 22.9379 17.6046 23.8333 16.5 23.8333H3.16666C2.0621 23.8333 1.16667 22.9379 1.16667 21.8333V3.16667Z"
+                    stroke="#212121"
+                    stroke-width="1.33333"
+                  />
+                  <circle
+                    cx="19.1668"
+                    cy="19.1654"
+                    r="5.33333"
+                    fill="#377D22"
+                  />
+                  <path
+                    d="M19.1665 21.8333V16.5M19.1665 16.5L17.1665 18.5M19.1665 16.5L21.1665 18.5"
+                    stroke="white"
+                    stroke-width="1.33333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M4.5 17.168H12.5M4.5 13.8346H12.5M4.5 10.5013H9.83333"
+                    stroke="#212121"
+                    stroke-width="1.33333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_14438_29071">
+                    <rect
+                      width="24"
+                      height="24"
+                      fill="white"
+                      transform="translate(0.5 0.5)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div>Click or drop your file here</div>
+          </div>
+          <div class="success-section">
+            <div class="sucess-message-sub-section">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <circle cx="7.00003" cy="6.99954" r="6.69876" fill="#00AA4E" />
+                <path
+                  d="M4.18799 7.46746L5.9393 9.21877L10.1424 5.01563"
+                  stroke="white"
+                  stroke-width="0.744306"
+                />
+              </svg>
+              <span class="text">Successfully converted</span>
+            </div>
+
+            <div class="file-name-sub-section">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="15"
+                viewBox="0 0 13 15"
+                fill="none"
+              >
+                <rect
+                  width="12.25"
+                  height="14"
+                  transform="translate(0.375 0.5)"
+                  fill="white"
+                />
+                <path
+                  d="M0.764377 2.05556C0.764377 1.41122 1.28671 0.888889 1.93104 0.888889H6.82552L9.43384 3.49721L10.8755 4.93886V12.9444C10.8755 13.5888 10.3532 14.1111 9.70882 14.1111H1.93104C1.28671 14.1111 0.764377 13.5888 0.764377 12.9444V2.05556Z"
+                  fill="#D9D9D9"
+                  stroke="#212121"
+                  stroke-width="0.777778"
+                />
+                <path
+                  d="M2.7085 10.2227H7.37516M2.7085 8.27821H7.37516M2.7085 6.33377H5.81961"
+                  stroke="#212121"
+                  stroke-width="0.777778"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="fileName-text">fileName.txt</span>
+            </div>
+
+            <div class="download-sub-section">
+              <div class="download-file-btn">
+                <a href="#" id="download-file-link">Download</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="failure-section">
+            <div class="failure-message-sub-section">
+              <svg
+                width="15"
+                height="14"
+                viewBox="0 0 15 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="7.34622" cy="6.69876" r="6.69876" fill="#EC0000" />
+                <path
+                  d="M5.11328 8.93459L9.57912 4.46875"
+                  stroke="white"
+                  stroke-width="0.744306"
+                />
+                <path
+                  d="M9.5791 8.93459L5.11326 4.46875"
+                  stroke="white"
+                  stroke-width="0.744306"
+                />
+              </svg>
+
+              <span class="text">Error While converting the report</span>
+            </div>
+
+            <div class="file-name-sub-section">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="15"
+                viewBox="0 0 13 15"
+                fill="none"
+              >
+                <rect
+                  width="12.25"
+                  height="14"
+                  transform="translate(0.375 0.5)"
+                  fill="white"
+                />
+                <path
+                  d="M0.764377 2.05556C0.764377 1.41122 1.28671 0.888889 1.93104 0.888889H6.82552L9.43384 3.49721L10.8755 4.93886V12.9444C10.8755 13.5888 10.3532 14.1111 9.70882 14.1111H1.93104C1.28671 14.1111 0.764377 13.5888 0.764377 12.9444V2.05556Z"
+                  fill="#D9D9D9"
+                  stroke="#212121"
+                  stroke-width="0.777778"
+                />
+                <path
+                  d="M2.7085 10.2227H7.37516M2.7085 8.27821H7.37516M2.7085 6.33377H5.81961"
+                  stroke="#212121"
+                  stroke-width="0.777778"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="fileName-text">fileName.txt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="error-section">
+          <div class="error-header">Errors</div>
+          <div class="error-body">1. Error in Calculation.</div>
+          <div class="error-body">2. Nodes not fully configured.</div>
+        </div>
+        <div class="note-section">
+          <div class="note-header">Notes</div>
+          <div class="note-body">
+            Make sure the model contains no error cases such as error in
+            calculation, node not fully configured and the report has not been
+            locked by the user.
+          </div>
+        </div>
+      </div>
     </div>
+
+    <script src="./index.js"></script>
   </body>
 </html>

@@ -302,6 +302,20 @@ const PROPS_TO_COPY = [
 let importedFileContent = "";
 let importedFileName = "";
 
+const noteSectionDiv = document.getElementsByClassName("note-section")[0];
+noteSectionDiv.style.display = "none";
+const errorSectionDiv = document.getElementsByClassName("error-section")[0];
+errorSectionDiv.style.display = "none";
+const dropFileSectionDiv =
+  document.getElementsByClassName("drop-file-section")[0];
+dropFileSectionDiv.style.display = "block";
+const successSectionDiv = document.getElementsByClassName("success-section")[0];
+successSectionDiv.style.display = "none";
+const failureSectionDiv = document.getElementsByClassName("failure-section")[0];
+failureSectionDiv.style.display = "none";
+
+const fileNameDivs = document.getElementsByClassName("fileName-text");
+
 function compressText(str) {
   return LZString.compressToBase64(str);
 }
@@ -429,7 +443,59 @@ const uploadNewModelFile = () => {
     fileInput.onchange = handleFileRead;
     fileInput.click();
   } catch (e) {
-    AudioListener("File upload failed!");
     console.log(`File upload failed! `, e);
   }
+};
+
+function downloadFileContent2(content) {
+  const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const downloadLink = document.getElementById("download-file-link");
+  downloadLink.href = url;
+  downloadLink.download = `${importedFileName}.txt`;
+}
+
+function processFileContent2() {
+  try {
+    const processedContent = migrateFileContent(importedFileContent);
+    dropFileSectionDiv.style.display = "none";
+    successSectionDiv.style.display = "block";
+    downloadFileContent2(processedContent);
+  } catch (e) {
+    dropFileSectionDiv.style.display = "none";
+    failureSectionDiv.style.display = "block";
+    console.log(`Migrate failed! `, e);
+  }
+}
+
+const uploadNewModelFile2 = () => {
+  const handleFileRead = (e) => {
+    const file = e.target.files[0];
+    importedFileName = file.name;
+
+    Array.from(fileNameDivs).forEach(function (element) {
+      element.innerHTML = `${importedFileName}.txt`;
+    });
+
+    const reader = new FileReader();
+    reader.onloadend = (e) => {
+      importedFileContent = e.target.result;
+      processFileContent2();
+    };
+    reader.readAsText(file);
+  };
+
+  try {
+    const fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.setAttribute("accept", ".txt");
+    fileInput.onchange = handleFileRead;
+    fileInput.click();
+  } catch (e) {
+    console.log(`File upload failed! `, e);
+  }
+};
+
+const uploadAndProcess = () => {
+  uploadNewModelFile2();
 };
