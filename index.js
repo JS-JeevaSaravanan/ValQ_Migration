@@ -333,6 +333,7 @@ function migrateFileContent(content) {
 function processTreeConfig(importedTreeConfig) {
   const [newTreeConfig, intermediateTreeConfig] = [[], []];
   const templateStructuresIdSet = new Set();
+  const linkedSimBaseNodeIdSet = new Set();
 
   for (let i = 0, len1 = importedTreeConfig.length; i < len1; i++) {
     const oldNode = importedTreeConfig[i];
@@ -348,12 +349,13 @@ function processTreeConfig(importedTreeConfig) {
 
     for (let j = 0, len2 = PROPS_TO_COPY.length; j < len2; j++) {
       const prop = PROPS_TO_COPY[j];
-      if (prop === "sMeth" && oldNode[prop] === "M") {
-        // TODO: transfer to next loop
-        continue;
-      } else {
-        newNode[prop] = oldNode[prop];
-      }
+      newNode[prop] = oldNode[prop];
+    }
+
+    const { lSimNode } = newNode;
+
+    if (lSimNode && !linkedSimBaseNodeIdSet.has(lSimNode)) {
+      linkedSimBaseNodeIdSet.add(lSimNode);
     }
     intermediateTreeConfig.push(newNode);
   }
@@ -369,6 +371,19 @@ function processTreeConfig(importedTreeConfig) {
       continue;
     }
     if (level === skipLvl) skipLvl = -1;
+
+    if (linkedSimBaseNodeIdSet.has(node.name) && node.locked === "X") {
+      node.locked = "";
+      node.sMeth = "P";
+    }
+
+    if (node.sMeth === "M") {
+      node.sMeth = "P";
+    }
+
+    if (node.dec > 4) {
+      node.dec = 4;
+    }
     newTreeConfig.push(node);
   }
 
