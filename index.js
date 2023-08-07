@@ -452,7 +452,7 @@ function downloadFileContent2(content) {
   const url = URL.createObjectURL(blob);
   const downloadLink = document.getElementById("download-file-link");
   downloadLink.href = url;
-  downloadLink.download = `${importedFileName}.txt`;
+  downloadLink.download = `${importedFileName}`;
 }
 
 function processFileContent2() {
